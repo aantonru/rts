@@ -5,7 +5,7 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass';
 //import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
 
-export function createComposer( w:number, h:number, renderer:III.WebGLRenderer, scene:III.Scene, camera:III.OrthographicCamera ):EffectComposer{
+export function createComposer( w:number, h:number, renderer:III.WebGLRenderer, scene:III.Scene, camera:III.PerspectiveCamera ):EffectComposer{
     const composer = new EffectComposer( renderer );
     const pass0 = new RenderPass( scene, camera );
     const bloomPass = new UnrealBloomPass( new III.Vector2( w, h ), 1.5, 0.4, 0.85 );

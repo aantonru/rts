@@ -9,7 +9,7 @@ import { ChemElem } from './util/chemElem';
 
 interface INow {
     ready: boolean;
-    camera: III.OrthographicCamera;
+    camera: III.PerspectiveCamera;
 	scene: III.Scene;
 	clock: III.Clock;
     envmap: III.Texture;
@@ -26,7 +26,7 @@ interface iSummary {
 
 export class Now3 implements INow {
     ready: boolean;
-    camera: III.OrthographicCamera;
+    camera: III.PerspectiveCamera;
 	scene: III.Scene;
 	clock: III.Clock;
     envmap: III.Texture;
@@ -40,10 +40,10 @@ export class Now3 implements INow {
     periodic: Array<any>;
     summary: iSummary;
     constructor(){
-        //this.camera = new III.PerspectiveCamera(45, 2, 3, 1000 );
+        this.camera = new III.PerspectiveCamera(45, 2, 3, 1000 );
         const frustumSize=500;
         const aspect=window.innerWidth/window.innerHeight;
-        this.camera=new III.OrthographicCamera(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
+     //   this.camera=new III.OrthographicCamera(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
         this.camera.position.fromArray( cfg3.camera.position );
         this.camera.zoom=10;
         this.scene = new III.Scene();

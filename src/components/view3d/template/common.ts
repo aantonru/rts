@@ -76,13 +76,13 @@ function addBall( ball:ChemElem ){
 	let body = new Ammo.btRigidBody(rbInfo);
 	body.setRollingFriction(0.5);
 	body.setFriction(0.5);
-	body.setDamping(0.0001, 0.0001);
+	body.setDamping(0.001, 0.001);
 	now3.world.addRigidBody(body);
 	ball.userData.body = body;
 	now3.bodies.push(ball);
 	let v=new III.Vector3();
 	v.copy(ball.position);
-	v.multiplyScalar(-0.5);
+	v.multiplyScalar(-0.1);
 
 
 	body.applyCentralImpulse( rndv3(ball.mass*5.5) );
@@ -178,7 +178,7 @@ export function hdr(params:any) {
 }
 
 export function balls(params:any) {
-	const max = 595;
+	const max = 535;
 
 	for (let i=0; i<max; i++){
 		let b=new ChemElem({});

@@ -197,7 +197,7 @@ export class ChemElem extends III.Group {
             if (this.mainMaterial.metalness>0) ctx.fillStyle="#ffffff";
             else ctx.fillStyle="#000000";
             
-            ctx.lineWidth=8;
+            ctx.lineWidth=4;
             ctx.strokeText( this.ion.symbol, 128, 168)
             ctx.fillText( this.ion.symbol, 128, 168);
         };
@@ -300,7 +300,7 @@ export class ChemElem extends III.Group {
             c1.lerpColors(this.mainMaterial.color, it.mainMaterial.color, 0.5)
 			const matLine = new LineMaterial( {
 					color: c1.getHex(),
-					linewidth: 9, // in world units with size attenuation, pixels otherwise
+					linewidth: 2, // in world units with size attenuation, pixels otherwise
 					vertexColors: true,
 					dashed: false,
 					alphaToCoverage: false,

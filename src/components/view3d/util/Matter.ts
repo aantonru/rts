@@ -150,11 +150,11 @@ export class Olecula extends III.Group {
 			const matLine = new LineMaterial( {
 
 					color: this.mainMaterial.color.getHex(),
-					linewidth: 9, // in world units with size attenuation, pixels otherwise
+					linewidth: 1, // in world units with size attenuation, pixels otherwise
 					vertexColors: false,
 
 					//resolution:  // to be set by renderer, eventually
-					dashed: false,
+					dashed: true,
 					alphaToCoverage: false,
 
 				} );
