@@ -111,7 +111,7 @@ export function stepWorld(delta:number){
 			v.copy(it.position);
 			v.multiplyScalar(-it.mass*1.5/(12+Math.random()*35));
 			if ((it.position.length()>20) && (Math.random()*10<2)) it.deltaTermal(-1)
-			if (Math.abs(it.position.length())>30) body.applyCentralImpulse(new Ammo.btVector3(v.x, v.y, v.z))
+			if (Math.abs(it.position.length())>10) body.applyCentralImpulse(new Ammo.btVector3(v.x, v.y, v.z))
 		}
 	}
 	//after step
@@ -138,7 +138,7 @@ function stepCollision(){
 			let contactPoint = contactManifold.getContactPoint( j );
 			ba.deltaTermal(contactPoint.getAppliedImpulse()*9/ba.mass);
 			bb.deltaTermal(contactPoint.getAppliedImpulse()*9/bb.mass);
-			if (ba.testLink(bb) && bb.testLink(ba)) joinAB(ba, bb, contactPoint.get_m_localPointA(), contactPoint.get_m_localPointB());
+			// if (ba.testLink(bb) && bb.testLink(ba)) joinAB(ba, bb, contactPoint.get_m_localPointA(), contactPoint.get_m_localPointB());
 		}
 	}
 };
@@ -178,7 +178,7 @@ export function hdr(params:any) {
 }
 
 export function balls(params:any) {
-	const max = 535;
+	const max = 65;
 
 	for (let i=0; i<max; i++){
 		let b=new ChemElem({});

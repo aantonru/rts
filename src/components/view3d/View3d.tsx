@@ -8,9 +8,7 @@ import { Import3 } from './util/Import3';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { createComposer } from './util/Composer';
 import { stepWorld } from "./template/common";
-import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
-
-
+import { VRButton } from "./util/AVR";
 export class View3d extends React.Component<any, ViewState> {
     container: RefObject<HTMLDivElement>;
     canvas: RefObject<HTMLCanvasElement>;
@@ -41,12 +39,9 @@ export class View3d extends React.Component<any, ViewState> {
 		renderer.setClearColor(new III.Color(0), 0);
 		renderer.toneMapping = III.ACESFilmicToneMapping;
 		this.renderer = renderer;
-
-//        let el=this.labels.current as HTMLDivElement;
-     //   this.css2d = new CSS2DRenderer({element:el})
-
         now3.setup(this);
 
+        document.body.appendChild( VRButton.createButton( this.renderer, {} ) );	
         window.addEventListener('resize', this.updateSize);
         this.updateSize();
     }
@@ -64,8 +59,8 @@ export class View3d extends React.Component<any, ViewState> {
             this.renderer.setSize(w,h);
 			now3.camera.updateProjectionMatrix();
             return {
-                width: Math.floor(w),
-                height: Math.floor(h) 
+                width: w,
+                height: h 
             }
       });
     }
@@ -85,19 +80,19 @@ export class View3d extends React.Component<any, ViewState> {
     play(){
         console.log('play');
         console.log(now3)
-/*
+
         const loop1 = () =>{
             let d=now3.clock.getDelta();
             this.animate(d);
             this.renderer.render( now3.scene, now3.camera );
         }
-*/
+/*
         const loop1 = () =>{
             let d=now3.clock.getDelta();
             this.animate(d);
             this.composer.render();
         }
-
+*/
         this.composer = createComposer(this.state.width, this.state.height, this.renderer, now3.scene, now3.camera )
         this.renderer.setAnimationLoop(loop1);
     }

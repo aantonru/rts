@@ -40,7 +40,7 @@ export class Now3 implements INow {
     periodic: Array<any>;
     summary: iSummary;
     constructor(){
-        this.camera = new III.PerspectiveCamera(45, 2, 3, 1000 );
+        this.camera = new III.PerspectiveCamera(45, 2, 1, 1000 );
         const frustumSize=500;
         const aspect=window.innerWidth/window.innerHeight;
      //   this.camera=new III.OrthographicCamera(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
@@ -58,9 +58,10 @@ export class Now3 implements INow {
     }
     setup( app:View3d ){
 		this.envmap = skyenv(app.renderer, true);
-	//	this.scene.environment = this.envmap;
-//		this.scene.background = this.envmap;
+		this.scene.environment = this.envmap;
+		this.scene.background = this.envmap;
         if (sup3.isValid(app.container.current)) this.controls = new OrbitControls( this.camera, app.container.current! );
+        this.controls.maxDistance=500;
         this.app = app;
 		if (!this.ready) {
 			app.configure(cfg3);
